@@ -64,7 +64,7 @@ inline void Calculator<T>::get2Operands(T& left, T& right)
 		opnd.pop();
 	}
 	else {
-		throw "ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½!";
+		throw "±í´ïÊ½´íÎó!";
 	}
 }
 
@@ -80,7 +80,7 @@ inline T Calculator<T>::operate(T left, char op, T right)
 	case '*':
 		return left * right;
 	case '/':
-		if (right == 0)throw "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îª0";
+		if (right == 0)throw "0²»ÄÜ×÷Îª³ýÊý";
 		return left / right;
 	case '^':
 		return pow(left, right);
@@ -89,7 +89,7 @@ inline T Calculator<T>::operate(T left, char op, T right)
 			return left % right;
 		}
 		else {
-			throw "È¡Ä£ï¿½ï¿½ï¿½ï¿½Ö»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
+			throw "È¡Ä£Ö»ÊÊÓÃÓÚÕûÊý";
 		}
 	}
 }
@@ -124,7 +124,7 @@ inline void Calculator<T>::Run()
 	char op;
 	priorChar = '=';
 	ch = Getchar();
-	if (optr.empty())throw "ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½!";
+	if (optr.empty())throw "±í´ïÊ½´íÎó!";
 	optrTop = optr.top();
 
 	while (optrTop != '=' || ch != '=')
@@ -139,7 +139,7 @@ inline void Calculator<T>::Run()
 		}
 		else  if (!isOperator(ch))
 		{
-			throw "ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½!";
+			throw "±í´ïÊ½´íÎó!";
 		}
 		else
 		{
@@ -148,10 +148,10 @@ inline void Calculator<T>::Run()
 				opnd.push(0);
 				priorChar = '0';
 			}
-			if (optrTop == ')' && ch == '(' || optrTop == '(' && ch == '=' || optrTop == '=' && ch == ')')throw "ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½!";
+			if (optrTop == ')' && ch == '(' || optrTop == '(' && ch == '=' || optrTop == '=' && ch == ')')throw "±í´ïÊ½´íÎó!";
 			else if (optrTop == '(' && ch == ')')
 			{
-				if (optr.empty())throw "ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½!";
+				if (optr.empty())throw "±í´ïÊ½´íÎó!";
 				optrTop = optr.top();
 				optr.pop();
 				ch = Getchar();
@@ -166,7 +166,7 @@ inline void Calculator<T>::Run()
 			else
 			{
 				if (optr.empty())
-					throw "ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½!";
+					throw "±í´ïÊ½´íÎó!";
 				op = optr.top();
 				optr.pop();
 				T left, right;
@@ -174,10 +174,10 @@ inline void Calculator<T>::Run()
 				opnd.push(operate(left, op, right));
 			}
 		}
-		if (optr.empty())throw "ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½!";
+		if (optr.empty())throw "±í´ïÊ½´íÎó!";
 		optrTop = optr.top();
 	}
-	if (opnd.empty())throw "ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½!";
+	if (opnd.empty())throw "±í´ïÊ½´íÎó!";
 	operand = opnd.top();
 	cout << operand << endl;
 }
